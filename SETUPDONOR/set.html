@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Questionnaire</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Blood Donation Questionnaire</h1>
+        <form>
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <label for="panelName">Panel Name:</label>
+                <input type="text" id="panelName" name="panelName">
+
+                <label for="donorNo">Donor No:</label>
+                <input type="text" id="donorNo" name="donorNo">
+
+                <label for="familyName">Family Name:</label>
+                <input type="text" id="familyName" name="familyName">
+
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName">
+
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+
+                <label for="idNo">ID No:</label>
+                <input type="text" id="idNo" name="idNo">
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob">
+
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender">
+
+                <label for="occupation">Occupation:</label>
+                <input type="text" id="occupation" name="occupation">
+
+                <label for="residentialAddress">Residential Address:</label>
+                <input type="text" id="residentialAddress" name="residentialAddress">
+
+                <label for="postalAddress">Postal Address:</label>
+                <input type="text" id="postalAddress" name="postalAddress">
+
+                <label for="homePhone">Telephone No. Home:</label>
+                <input type="tel" id="homePhone" name="homePhone">
+
+                <label for="workPhone">Telephone No. Work:</label>
+                <input type="tel" id="workPhone" name="workPhone">
+
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile">
+
+                <label for="email">E-mail Address:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-section">
+                <h2>Health Assessment</h2>
+                <label>1.1 Are you feeling well and in good health today?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes1" name="health1" value="yes">
+                    <label for="healthYes1">Yes</label>
+                    <input type="radio" id="healthNo1" name="health1" value="no">
+                    <label for="healthNo1">No</label>
+                </div>
+
+                <label>1.2 In the last 4 hours, have you had a meal or snack?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes2" name="health2" value="yes">
+                    <label for="healthYes2">Yes</label>
+                    <input type="radio" id="healthNo2" name="health2" value="no">
+                    <label for="healthNo2">No</label>
+                </div>
+
+                <label>1.3 Have you already given blood in the last 16 weeks?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes3" name="health3" value="yes">
+                    <label for="healthYes3">Yes</label>
+                    <input type="radio" id="healthNo3" name="health3" value="no">
+                    <label for="healthNo3">No</label>
+                </div>
+                
+                <label>1.4 Have you got a chesty cough, sore throat or active cold sore?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes4" name="health4" value="yes">
+                    <label for="healthYes4">Yes</label>
+                    <input type="radio" id="healthNo4" name="health4" value="no">
+                    <label for="healthNo4">No</label>
+                </div>
+
+                <label>1.5 Are you pregnant or breastfeeding?</label>
+                    <div class="radio-group">
+                    <input type="radio" id="healthYes5" name="health5" value="yes">
+                    <label for="healthYes5">Yes</label>
+                    <input type="radio" id="healthNo5" name="health5" value="no">
+                    <label for="healthNo5">No</label>
+                </div>
+                
+                <label>1.6 Do you have or have you ever had:</label>
+                <label>a. Chest pains, heart disease/surgery or a stroke?</label>
+                    <div class="radio-group">
+                    <input type="radio" id="healthYes6a" name="health6a" value="yes">
+                    <label for="healthYes6a">Yes</label>
+                    <input type="radio" id="healthNo6a" name="health6a" value="no">
+                    <label for="healthNo6a">No</label>
+                </div>
+
+                <label>b. Lung disease, tuberculosis or asthma?</label>
+                    <div class="radio-group">
+                    <input type="radio" id="healthYes6b" name="health6b" value="yes">
+                    <label for="healthYes6b">Yes</label>
+                    <input type="radio" id="healthNo6b" name="health6b" value="no">
+                    <label for="healthNo6b">No</label>
+                </div>
+
+                <label>c. Cancer, a blood disease, an abnormal bleeding disorder, or a bleeding gastric ulcer or duodenal ulcer?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes6c" name="health6c" value="yes">
+                    <label for="healthYes6c">Yes</label>
+                    <input type="radio" id="healthNo6c" name="health6c" value="no">
+                    <label for="healthNo6c">No</label>
+                </div>
+
+                <label>d. Diabetes, thyroid disease, kidney disease, epilepsy (fits)?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes6d" name="health6d" value="yes">
+                    <label for="healthYes6d">Yes</label>
+                    <input type="radio" id="healthNo6d" name="health6d" value="no">
+                    <label for="healthNo6d">No</label>
+                </div>
+
+                <label>e. Chagas disease, babesiosis, HTLVI/II or any other chronic infectious disease?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes6e" name="health6e" value="yes">
+                    <label for="healthYes6e">Yes</label>
+                    <input type="radio" id="healthNo6e" name="health6e" value="no">
+                    <label for="healthNo6e">No</label>
+                </div>
+
+                <label>1.7 In the last 7 days, have you seen a doctor, dentist or any other healthcare professional or are you waiting to see one (except for routine screening appointments)?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes7" name="health7" value="yes">
+                    <label for="healthYes7">Yes</label>
+                    <input type="radio" id="healthNo7" name="health7" value="no">
+                    <label for="healthNo7">No</label>
+                </div>
+
+                <label>1.8 In the past 12 months:</label>
+                <label>a. Have you been ill, received any treatment or taken any medication?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes8a" name="health8a" value="yes">
+                    <label for="healthYes8a">Yes</label>
+                    <input type="radio" id="healthNo8a" name="health8a" value="no">
+                    <label for="healthNo8a">No</label>
+                </div>
+
+                <label>b. Have you been under a doctor’s care, undergone surgery, or a diagnostic procedure, suffered a major illness, or been involved in a serious accident?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes8b" name="health8b" value="yes">
+                    <label for="healthYes8b">Yes</label>
+                    <input type="radio" id="healthNo8b" name="health8b" value="no">
+                    <label for="healthNo8b">No</label>
+                </div>
+
+                <label>1.9 Have you ever had yellow jaundice (excluding jaundice at birth), hepatitis or liver disease or a positive test for hepatitis?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes9" name="health9" value="yes">
+                    <label for="healthYes9">Yes</label>
+                    <input type="radio" id="healthNo9" name="health9" value="no">
+                    <label for="healthNo9">No</label>
+                </div>
+
+                <label>a. In the past 12 months, have you had close contact with a person with yellow jaundice or viral hepatitis, or have you been given a hepatitis B vaccination?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes9a" name="health9a" value="yes">
+                    <label for="healthYes9a">Yes</label>
+                    <input type="radio" id="healthNo9a" name="health9a" value="no">
+                    <label for="healthNo9a">No</label>
+                </div>
+
+                <label>b. Have you ever had hepatitis B or hepatitis C or think you may have hepatitis now?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes9b" name="health9b" value="yes">
+                    <label for="healthYes9b">Yes</label>
+                    <input type="radio" id="healthNo9b" name="health9b" value="no">
+                    <label for="healthNo9b">No</label>
+                </div>
+
+                <label>c. In the past 12 months, have you been tattooed, had ear or body piercing, acupuncture, circumcision or scarification, cosmetic treatment?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes9c" name="health9c" value="yes">
+                    <label for="healthYes9c">Yes</label>
+                    <input type="radio" id="healthNo9c" name="health9c" value="no">
+                    <label for="healthNo9c">No</label>
+                </div>
+
+                <label>1.10 In the past 12 months, have you or your sexual partner received a blood transfusion?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes10" name="health10" value="yes">
+                    <label for="healthYes10">Yes</label>
+                    <input type="radio" id="healthNo10" name="health10" value="no">
+                    <label for="healthNo10">No</label>
+                </div>
+
+                <label>1.11 Have you or your sexual partner been treated with human or animal blood products or clotting factors?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes11" name="health11" value="yes">
+                    <label for="healthYes11">Yes</label>
+                    <input type="radio" id="healthNo11" name="health11" value="no">
+                    <label for="healthNo11">No</label>
+                </div>
+
+                <label>1.12 Have you ever had injections of human pituitary growth hormone, pituitary gonadotrophin (fertility medicine) or seen a neurosurgeon or neurologist?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes12" name="health12" value="yes">
+                    <label for="healthYes12">Yes</label>
+                    <input type="radio" id="healthNo12" name="health12" value="no">
+                    <label for="healthNo12">No</label>
+                </div>
+
+                <label>1.13 Have you or close relatives had an unexplained neurological condition or been diagnosed with Creutzfeldt-Jacob Disease or ‘mad cow disease’?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes13" name="health13" value="yes">
+                    <label for="healthYes13">Yes</label>
+                    <input type="radio" id="healthNo13" name="health13" value="no">
+                    <label for="healthNo13">No</label>
+                </div>
+
+                <label>1.14 Have you:</label>
+                <label>a. Ever had malaria or an unexplained fever associated with travel?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes14a" name="health14a" value="yes">
+                    <label for="healthYes14a">Yes</label>
+                    <input type="radio" id="healthNo14a" name="health14a" value="no">
+                    <label for="healthNo14a">No</label>
+                </div>
+
+                <label>b. Visited any malarial area in the last 12 months?</label>
+                <div class="radio-group">
+                    <input type="radio" id="healthYes14b" name="health14b" value="yes">
+                    <label for="healthYes14b">Yes</label>
+                    <input type="radio" id="healthNo14b" name="health14b" value="no">
+                    <label for="healthNo14b">No</label>
+                </div>
+
+                <label>1.15 When did you last travel to another region or country (in months / years)?</label>
+                <input type="text" id="health15" name="health15">
+            </div>
+            
+            <div class="form-section">
+                <h2>Risk Assessment</h2>
+                <label>2.1 Is your reason for donating blood to undergo an HIV test?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes1" name="risk1" value="yes">
+                    <label for="riskYes1">Yes</label>
+                    <input type="radio" id="riskNo1" name="risk1" value="no">
+                    <label for="riskNo1">No</label>
+                </div>
+
+                <label>2.2 Have you ever been tested for HIV?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes2" name="risk2" value="yes">
+                    <label for="riskYes2">Yes</label>
+                    <input type="radio" id="riskNo2" name="risk2" value="no">
+                    <label for="riskNo2">No</label>
+                </div>
+
+                <label>2.3 If ‘‘Yes’’ what was the reason?</label>
+                <select id="risk3" name="risk3">
+                    <option value="voluntary">Voluntary</option>
+                    <option value="employment">Employment</option>
+                    <option value="insurance">Insurance</option>
+                    <option value="medical">Medical</option>
+                    <option value="other">Other</option>
+                </select>
+            
+                <label>2.4 Have you ever had casual, oral or anal sex with someone whose background you do not know, with or without a condom?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes4" name="risk4" value="yes">
+                    <label for="riskYes4">Yes</label>
+                    <input type="radio" id="riskNo4" name="risk4" value="no">
+                    <label for="riskNo4">No</label>
+                </div>
+
+                <label>2.5 Have you ever exchanged money, drugs, goods or favours in return for sex?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes5" name="risk5" value="yes">
+                    <label for="riskYes5">Yes</label>
+                    <input type="radio" id="riskNo5" name="risk5" value="no">
+                    <label for="riskNo5">No</label>
+                </div>
+
+                <label>2.6 Have you suffered from a sexually transmitted disease (STD): e.g. syphilis, gonorrhoea, genital herpes, genital ulcer, VD, or ‘drop’?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes6" name="risk6" value="yes">
+                    <label for="riskYes6">Yes</label>
+                    <input type="radio" id="riskNo6" name="risk6" value="no">
+                    <label for="riskNo6">No</label>
+                </div>
+
+                <label>2.7 In the past 12 months:</label>
+                <label>a. Has there been any change in your marital status?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes7a" name="risk7a" value="yes">
+                    <label for="riskYes7a">Yes</label>
+                    <input type="radio" id="riskNo7a" name="risk7a" value="no">
+                    <label for="riskNo7a">No</label>
+                </div>
+
+                <label>b. If sexually active, do you think any of the above questions (2.1-2.6) may be true for your sexual partner?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes7b" name="risk7b" value="yes">
+                    <label for="riskYes7b">Yes</label>
+                    <input type="radio" id="riskNo7b" name="risk7b" value="no">
+                    <label for="riskNo7b">No</label>
+                </div>
+
+                <label>c. Have you been a victim of sexual abuse?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes7c" name="risk7c" value="yes">
+                    <label for="riskYes7c">Yes</label>
+                    <input type="radio" id="riskNo7c" name="risk7c" value="no">
+                    <label for="riskNo7c">No</label>
+                </div>
+
+                <label>2.8 Have you or your sexual partner suffered from night sweats, unintentional weight loss, diarrhea, or swollen glands?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes8" name="risk8" value="yes">
+                    <label for="riskYes8">Yes</label>
+                    <input type="radio" id="riskNo8" name="risk8" value="no">
+                    <label for="riskNo8">No</label>
+                </div>
+
+                <label>2.9 Have you ever injected yourself or been injected with illegal or non-prescribed drugs including body-building drugs or cosmetics (even if this was only once or a long time ago)?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes9" name="risk9" value="yes">
+                    <label for="riskYes9">Yes</label>
+                    <input type="radio" id="riskNo9" name="risk9" value="no">
+                    <label for="riskNo9">No</label>
+                </div>
+
+                <label>2.10 Have you been in contact with anyone with an infectious disease or in the last 12 months have you had any immunizations, vaccinations, or jabs?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes10" name="risk10" value="yes">
+                    <label for="riskYes10">Yes</label>
+                    <input type="radio" id="riskNo10" name="risk10" value="no">
+                    <label for="riskNo10">No</label>
+                </div>
+
+                <label>2.11 Have you ever been refused as a blood donor, or told not to donate blood?</label>
+                <div class="radio-group">
+                    <input type="radio" id="riskYes11" name="risk11" value="yes">
+                    <label for="riskYes11">Yes</label>
+                    <input type="radio" id="riskNo11" name="risk11" value="no">
+                    <label for="riskNo11">No</label>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Declaration</h2>
+                <p>Please do not sign until you have answered all the questions and read the declaration below.</p>
+                <p>a. I confirm that, to the best of my knowledge, I have answered all the questions accurately and I consider my blood safe for transfusion to a patient.</p>
+                <p>b. I understand that any wilful misrepresentation of facts could endanger my health or that of patients receiving my blood and may lead to litigation. I am aware that my blood will be screened for, among others, HIV, hepatitis B, hepatitis C, and syphilis. I understand that these screening tests are not diagnostic and may yield false-positive results. If any of the tests give a reactive result, I will be contacted using the information I have provided, and offered counselling.</p>
+                <p>c. I understand the blood donation process, and I have been counseled regarding the importance of safe blood donation.</p>
+                <p>d. I confirm that I am over the age of 18 years.</p>
+                <p>e. I undertake that should there be any reason for my blood to be deemed unsafe for use at any stage, I will inform the Blood Transfusion Service.</p>
+            
+                <label for="donorSignature">Donor’s signature:</label>
+                <input type="text" id="donorSignature" name="donorSignature">
+            
+                <label for="decision">Decision:</label>
+                <select id="decision" name="decision">
+                    <option value="accept">Accept</option>
+                    <option value="defer">Defer</option>
+                </select>
+            
+                <label for="donorWeight">Donor weight (kg):</label>
+                <input type="number" id="donorWeight" name="donorWeight">
+            
+                <label for="bloodPressure">Blood pressure:</label>
+                <input type="text" id="bloodPressure" name="bloodPressure">
+            
+                <label for="hemoglobin">Haemoglobin/haematocrit:</label>
+                <input type="text" id="hemoglobin" name="hemoglobin">
+            
+                <label for="deferralPeriod">Deferral period:</label>
+                <input type="text" id="deferralPeriod" name="deferralPeriod">
+            
+                <label for="reasonForDeferral">Reason for deferral:</label>
+                <textarea id="reasonForDeferral" name="reasonForDeferral"></textarea>
+            
+                <label for="interviewer">Interviewed by (name and signature):</label>
+                <input type="text" id="interviewer" name="interviewer">
+            
+                <label for="venepuncture">Venepuncture performed by (name and signature):</label>
+                <input type="text" id="venepuncture" name="venepuncture">
+            
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+            
+            <input type="submit" class="button" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
