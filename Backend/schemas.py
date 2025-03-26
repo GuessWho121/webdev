@@ -56,14 +56,13 @@ class EmergencyContactBase(BaseModel):
     phone: constr(min_length=10, max_length=10)
     email: EmailStr
     relation: str
-    user_email: EmailStr  # Email to determine donor/receiver
+    user_email: EmailStr  # Used to determine donor/receiver
 
 class EmergencyContactCreate(EmergencyContactBase):
-    pass  # donor_id or receiver_id will be assigned based on user_email
+    pass  # `user_email` is inherited from `EmergencyContactBase`
 
 class EmergencyContactResponse(EmergencyContactBase):
     id: int
-    donor_id: Optional[int] = None
-    receiver_id: Optional[int] = None
+    
     class Config:
         from_attributes = True

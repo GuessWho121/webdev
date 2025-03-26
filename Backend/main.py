@@ -40,4 +40,21 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Invalid credentials")
     return {"message": "Login successful", "user_id": db_user.id}
 
-    
+# Add Emergency Contacts
+@app.post("/add-emergency-contacts/")
+def add_emergency_contacts(contacts: List[EmergencyContactCreate], db: Session = Depends(get_db)):
+    if len(contacts) > 2:
+        raise HTTPException(status_code=400, detail="Only 2 emergency contacts allowed per user.")
+
+    user = db.query(User).filter(User.email == contacts[0].user_email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    existing_contacts = db.query(EmergencyContact).filter(EmergencyContact.user_email == user.email).count()
+    if existing_contacts + len(contacts) > 2:
+        raise HTTPException(status_code=400, detail="User already has emergency contacts assigned.")
+
+    emergency_contacts = [EmergencyContact(**contact.dict()) for contact in contacts]
+    db.add_all(emergency_contacts)
+    db.commit()
+    return {"message": "Emergency contacts added successfully"}

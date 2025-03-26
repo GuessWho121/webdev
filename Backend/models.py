@@ -28,6 +28,7 @@ class User(Base):
         "polymorphic_identity": "user",
         "polymorphic_on": None
     }
+    emergency_contacts = relationship("EmergencyContact", back_populates="user", cascade="all, delete-orphan")
 
 # Donor Model
 class Donor(User):
@@ -65,9 +66,7 @@ class EmergencyContact(Base):
     phone = Column(String(10), nullable=False)
     email = Column(String, nullable=False)
     relation = Column(String, nullable=False)
-    donor_id = Column(Integer, ForeignKey("donors.id"), nullable=True)
-    receiver_id = Column(Integer, ForeignKey("receivers.id"), nullable=True)
+    user_email = Column(String, ForeignKey("users.email"), nullable=False)
 
-    donor = relationship("Donor", back_populates="emergency_contacts")
-    receiver = relationship("Receiver", back_populates="emergency_contacts")
+    user = relationship("User", back_populates="emergency_contacts")
 
