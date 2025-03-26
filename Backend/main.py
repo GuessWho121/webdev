@@ -1,9 +1,12 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
+from fastapi.responses import JSONResponse
 from database import engine, SessionLocal, Base
-from models import User, Donor, Receiver
-from schema import UserCreate, UserLogin, UserResponse
+from models import User
+from schema import UserCreate, UserLogin, UserResponse, EmergencyContactCreate
 from passlib.context import CryptContext
+from typing import List
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -11,6 +14,7 @@ Base.metadata.create_all(bind=engine)
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+# Dependency to get DB session
 def get_db():
     db = SessionLocal()
     try:
@@ -18,7 +22,13 @@ def get_db():
     finally:
         db.close()
 
-# Register User (Donor/Receiver)
+#Check if User Exists (Used in Register & Login)
+@app.get("/user_exists")
+def user_exists(email: str, db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.email == email).first()
+    return {"exists": bool(user)}
+
+#Register User (Donor/Recipient)
 @app.post("/register", response_model=UserResponse)
 def register(user: UserCreate, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.email == user.email).first()
@@ -32,13 +42,21 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     db.refresh(db_user)
     return db_user
 
-# Login User
+#Login User
 @app.post("/login")
 def login(user: UserLogin, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.email == user.email).first()
+    
     if not db_user or not pwd_context.verify(user.password, db_user.password):
         raise HTTPException(status_code=400, detail="Invalid credentials")
-    return {"message": "Login successful", "user_id": db_user.id}
+
+    return JSONResponse(content={"message": "Login successful", "redirect": "/dashboard"})
+
+# Dashboard Route
+@app.get("/dashboard")
+def dashboard():
+    return {"message": "Welcome to the dashboard!"}
+
 
 # Add Emergency Contacts
 @app.post("/add-emergency-contacts/")
@@ -58,3 +76,11 @@ def add_emergency_contacts(contacts: List[EmergencyContactCreate], db: Session =
     db.add_all(emergency_contacts)
     db.commit()
     return {"message": "Emergency contacts added successfully"}
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to your frontend URL for security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)

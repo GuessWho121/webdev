@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, constr
-from typing import Optional
+
 from datetime import date
 from enum import Enum
 
@@ -24,6 +24,11 @@ class UserResponse(UserBase):
     id: int
     class Config:
         from_attributes = True
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
 
 class DonorBase(UserBase):
     blood_type: BloodType
