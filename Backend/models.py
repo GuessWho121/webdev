@@ -16,17 +16,17 @@ class BloodType(enum.Enum):
 
 # Enum for Gender
 class Gender(enum.Enum):
-    MALE = "Male"
-    FEMALE = "Female"
-    OTHER = "Other"
+    MALE = 1
+    FEMALE = 2
+    OTHER = 3
 
 # User Model (Base Class)
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String, nullable=False)
-    email = Column(String, unique=True, nullable=False)
+    email = Column(String, unique=True, nullable=False, index=True)
     password = Column(String, nullable=False)
 
     emergency_contacts = relationship("EmergencyContact", back_populates="user", cascade="all, delete-orphan")
@@ -35,29 +35,35 @@ class User(Base):
 class Donor(Base):
     __tablename__ = "donors"
 
-    id = Column(Integer, ForeignKey("users.id"), primary_key=True)
+    id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
     blood_type = Column(Enum(BloodType), nullable=False)
     dob = Column(Date, nullable=False)
-    gender = Column(Enum(Gender), nullable=False)
+    gender = Column(Integer, nullable=False)
     phone = Column(String(10), nullable=False)
+
+    user = relationship("User", backref="donor_profile", uselist=False)
 
 # Receiver Model
 class Receiver(Base):
     __tablename__ = "receivers"
 
-    id = Column(Integer, ForeignKey("users.id"), primary_key=True)
+    id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
     required_blood_type = Column(Enum(BloodType), nullable=False)
     phone = Column(String(10), nullable=False)
+
+    user = relationship("User", backref="receiver_profile", uselist=False)
 
 # Emergency Contact Model
 class EmergencyContact(Base):
     __tablename__ = "emergency_contacts"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String, nullable=False)
     phone = Column(String(10), nullable=False)
     email = Column(String, nullable=False)
     relation = Column(String, nullable=False)
-    user_email = Column(String, ForeignKey("users.email"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
     user = relationship("User", back_populates="emergency_contacts")
+
+
