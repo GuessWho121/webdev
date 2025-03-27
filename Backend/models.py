@@ -29,9 +29,10 @@ class User(Base):
     email = Column(String, unique=True, nullable=False, index=True)
     password = Column(String, nullable=False)
 
+    # Define relationship with emergency contacts
     emergency_contacts = relationship("EmergencyContact", back_populates="user", cascade="all, delete-orphan")
 
-# Donor Model
+# Donor Model (inherits from User)
 class Donor(Base):
     __tablename__ = "donors"
 
@@ -41,9 +42,10 @@ class Donor(Base):
     gender = Column(Integer, nullable=False)
     phone = Column(String(10), nullable=False)
 
+    # Define relationship with User
     user = relationship("User", backref="donor_profile", uselist=False)
 
-# Receiver Model
+# Receiver Model (inherits from User)
 class Receiver(Base):
     __tablename__ = "receivers"
 
@@ -51,6 +53,7 @@ class Receiver(Base):
     required_blood_type = Column(Enum(BloodType), nullable=False)
     phone = Column(String(10), nullable=False)
 
+    # Define relationship with User
     user = relationship("User", backref="receiver_profile", uselist=False)
 
 # Emergency Contact Model
@@ -64,6 +67,6 @@ class EmergencyContact(Base):
     relation = Column(String, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
+    # Define relationship with User
     user = relationship("User", back_populates="emergency_contacts")
-
 

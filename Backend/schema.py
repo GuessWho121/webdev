@@ -1,7 +1,7 @@
-from pydantic import BaseModel, EmailStr, constr, validator
+from pydantic import BaseModel, EmailStr, constr, validator, Field
 from datetime import date
 from enum import Enum
-from typing import Optional
+from typing import Optional, Dict, Any, List
 
 class BloodType(str, Enum):
     A_POSITIVE = "A+"
@@ -93,4 +93,36 @@ class EmergencyContactResponse(EmergencyContactBase):
     class Config:
         from_attributes = True
 
+# New schemas for form data
+class DonorFormData(BaseModel):
+    email: EmailStr
+    donorNo: Optional[str] = None
+    name: Optional[str] = None
+    title: Optional[str] = None
+    idNo: Optional[str] = None
+    dob: Optional[date] = None
+    gender: Optional[str] = None
+    bloodGroup: Optional[str] = None
+    occupation: Optional[str] = None
+    residentialAddress: Optional[str] = None
+    postalAddress: Optional[str] = None
+    homePhone: Optional[str] = None
+    mobile: Optional[str] = None
+    # Health assessment fields are not stored in our model, so we'll ignore them
+
+class ReceiverFormData(BaseModel):
+    email: EmailStr
+    patientName: Optional[str] = None
+    fathersHusbandName: Optional[str] = None
+    patientsRegdAdmnNo: Optional[str] = None
+    ward: Optional[str] = None
+    bedNo: Optional[str] = None
+    hospitalName: Optional[str] = None
+    doctorIncharge: Optional[str] = None
+    clinicalDiagnosis: Optional[str] = None
+    routineEmergency: Optional[str] = None
+    bloodUnit: Optional[str] = None
+    noOfUnits: Optional[int] = None
+    contactDetails: Optional[str] = None
+    doctorMobile: Optional[str] = None
 
