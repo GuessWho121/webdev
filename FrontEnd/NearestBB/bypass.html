@@ -8,18 +8,47 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
         #map { height: 500px; width: 100%; }
+
+        h2{
+            font-size: 35px;
+        }
+
+        .inp{
+            color: black;
+            margin-bottom: 35px;
+            height: 30px;
+            font-size: large;
+            text-align: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        button{
+            background-color: #c21b1b;
+            border: none;
+            color: white;
+            text-align: center;
+            display: inline-block;
+            height: 35px;
+            font-size: large;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        
     </style>
 </head>
 <body>
 
     <h2>Enter Pincode to Find Nearest Blood Banks</h2>
-    <input type="text" id="pincode" placeholder="Enter Pincode">
+    <input type="text" id="pincode" placeholder="Enter Pincode" class="inp">
     <button onclick="fetchLocation()">Search</button>
 
     <div id="map"></div>
 
     <script>
-        let map = L.map('map').setView([20.5937, 78.9629], 5); // Default to India
+        let map = L.map('map').setView([20.5937, 78.9629], 5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
         function fetchLocation() {

@@ -271,19 +271,19 @@ ul
     margin-top: 20px;
     border-radius: 15px;
     padding: 5px;
-    height: 680px;
+    height: auto;
     display: flexbox;
     flex-direction: row;
 }
 
 .l{
-    height: 600px;
+    height: 700px;
 }
 
 .l iframe{
     border-radius: 15px;
     width: 100%;
-    height: 97%;
+    height: 100%;
 }
 
 .r{
