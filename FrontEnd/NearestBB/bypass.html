@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearest Blood Banks</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map { height: 500px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Pincode to Find Nearest Blood Banks</h2>
+    <input type="text" id="pincode" placeholder="Enter Pincode">
+    <button onclick="fetchLocation()">Search</button>
+
+    <div id="map"></div>
+
+    <script>
+        let map = L.map('map').setView([20.5937, 78.9629], 5); // Default to India
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        function fetchLocation() {
+            let pincode = document.getElementById("pincode").value;
+            fetch(`https://nominatim.openstreetmap.org/search?postalcode=${pincode}&country=India&format=json`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        let lat = data[0].lat;
+                        let lon = data[0].lon;
+                        map.setView([lat, lon], 12);
+                        fetchBloodBanks(lat, lon);
+                    } else {
+                        alert("Pincode not found!");
+                    }
+                });
+        }
+
+        function fetchBloodBanks(lat, lon) {
+            let query = `[out:json];node(around:5000,${lat},${lon})["amenity"="blood_donation"];out;`;
+            let overpassUrl = "https://overpass-api.de/api/interpreter?data=" + encodeURIComponent(query);
+
+            fetch(overpassUrl)
+                .then(response => response.json())
+                .then(data => {
+                    data.elements.forEach(element => {
+                        let { lat, lon, tags } = element;
+                        let name = tags.name || "Unknown Blood Bank";
+                        L.marker([lat, lon]).addTo(map).bindPopup(name);
+                    });
+                });
+        }
+    </script>
+
+</body>
+</html>
