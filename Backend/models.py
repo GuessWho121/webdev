@@ -1,8 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Enum, Date, create_engine
-from sqlalchemy.orm import relationship
-from database import Base, engine
 import enum
-
+from sqlalchemy import Column, Integer, String, ForeignKey, Enum, Date
+from sqlalchemy.orm import relationship
+from database import Base
 
 # Enum for Blood Types
 class BloodType(enum.Enum):
@@ -15,7 +14,13 @@ class BloodType(enum.Enum):
     O_POSITIVE = "O+"
     O_NEGATIVE = "O-"
 
-# User Model
+# Enum for Gender
+class Gender(enum.Enum):
+    MALE = "Male"
+    FEMALE = "Female"
+    OTHER = "Other"
+
+# User Model (Base Class)
 class User(Base):
     __tablename__ = "users"
 
@@ -24,40 +29,27 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
 
-    __mapper_args__ = {
-        "polymorphic_identity": "user",
-        "polymorphic_on": None
-    }
     emergency_contacts = relationship("EmergencyContact", back_populates="user", cascade="all, delete-orphan")
 
 # Donor Model
-class Donor(User):
+class Donor(Base):
     __tablename__ = "donors"
 
     id = Column(Integer, ForeignKey("users.id"), primary_key=True)
     blood_type = Column(Enum(BloodType), nullable=False)
     dob = Column(Date, nullable=False)
-    gender = Column(Integer, nullable=False)
+    gender = Column(Enum(Gender), nullable=False)
     phone = Column(String(10), nullable=False)
 
-    __mapper_args__ = {
-        "polymorphic_identity": "donor"
-    }
-
-#Receiver Model 
-class Receiver(User):
+# Receiver Model
+class Receiver(Base):
     __tablename__ = "receivers"
 
     id = Column(Integer, ForeignKey("users.id"), primary_key=True)
     required_blood_type = Column(Enum(BloodType), nullable=False)
     phone = Column(String(10), nullable=False)
-    
 
-    __mapper_args__ = {
-        "polymorphic_identity": "receiver"
-    }
-
-#EmergencyContact Model
+# Emergency Contact Model
 class EmergencyContact(Base):
     __tablename__ = "emergency_contacts"
 
@@ -69,4 +61,3 @@ class EmergencyContact(Base):
     user_email = Column(String, ForeignKey("users.email"), nullable=False)
 
     user = relationship("User", back_populates="emergency_contacts")
-
