@@ -93,7 +93,7 @@ class EmergencyContactResponse(EmergencyContactBase):
     class Config:
         from_attributes = True
 
-# New schemas for form data
+# Form data schemas
 class DonorFormData(BaseModel):
     email: EmailStr
     donorNo: Optional[str] = None
@@ -108,7 +108,15 @@ class DonorFormData(BaseModel):
     postalAddress: Optional[str] = None
     homePhone: Optional[str] = None
     mobile: Optional[str] = None
-    # Health assessment fields are not stored in our model, so we'll ignore them
+    # Emergency contacts
+    name1: str
+    phone1: str
+    email1: EmailStr
+    relation1: str
+    name2: Optional[str] = None
+    phone2: Optional[str] = None
+    email2: Optional[EmailStr] = None
+    relation2: Optional[str] = None
 
 class ReceiverFormData(BaseModel):
     email: EmailStr
@@ -125,4 +133,20 @@ class ReceiverFormData(BaseModel):
     noOfUnits: Optional[int] = None
     contactDetails: Optional[str] = None
     doctorMobile: Optional[str] = None
+    # Emergency contacts
+    name1: str
+    phone1: str
+    email1: EmailStr
+    relation1: str
+    name2: Optional[str] = None
+    phone2: Optional[str] = None
+    email2: Optional[EmailStr] = None
+    relation2: Optional[str] = None
+
+class ProfileResponse(BaseModel):
+    user: Dict[str, Any]
+    is_donor: bool
+    is_receiver: bool
+    profile: Dict[str, Any]
+    emergency_contacts: List[Dict[str, Any]]
 
