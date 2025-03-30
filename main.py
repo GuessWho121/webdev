@@ -352,7 +352,7 @@ def get_profile(user_id: int, db: Session = Depends(get_db)):
             "rh_factor": rh_factor,
             "dob": donor.dob.isoformat() if donor and donor.dob else None,
             "age": age,
-            "gender  donor.dob.isoformat() if donor and donor.dob else None,
+            "gender": donor.dob.isoformat() if donor and donor.dob else None,
             "age": age,
             "gender": gender_str,
             "phone": donor.phone if donor else (receiver.phone if receiver else None)
